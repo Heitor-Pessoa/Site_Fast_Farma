@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastFarma</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>FastFarma</h1>
+            <nav>
+                <ul>
+                    <li><button class="tab-button" onclick="showTab('cadastro')">Cadastro</button></li>
+                    <li><button class="tab-button" onclick="showTab('atendimento')">Atendimento Médico</button></li>
+                    <li><button class="tab-button" onclick="showTab('solicitacao')">Solicitação de Medicamentos</button></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="cadastro" class="tab">
+            <h2>Cadastro</h2>
+            <form id="cadastroForm" onsubmit="return validateCadastro()">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" required>
+
+                <label for="idade">Idade:</label>
+                <input type="number" id="idade" required>
+
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" required>
+
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+
+                <label for="sexo">Sexo:</label>
+                <select id="sexo" required>
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                </select>
+
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" required>
+
+                <button type="submit">Cadastrar</button>
+            </form>
+            <p id="cadastroError" style="color: red;"></p>
+        </section>
+
+        <section id="atendimento" class="tab">
+            <h2>Atendimento Médico</h2>
+            <div class="medicos">
+                <div class="medico cardio" onclick="startChat('Dr. João Silva')">
+                    <p>Dr. João Silva</p>
+                    <p>Cardiologista</p>
+                </div>
+                <div class="medico cardio" onclick="startChat('Dra. Maria Souza')">
+                    <p>Dra. Maria Souza</p>
+                    <p>Cardiologista</p>
+                </div>
+
+                <div class="medico pediatra" onclick="startChat('Dr. Carlos Lima')">
+                    <p>Dr. Carlos Lima</p>
+                    <p>Pediatra</p>
+                </div>
+                <div class="medico pediatra" onclick="startChat('Dra. Paula Ribeiro')">
+                    <p>Dra. Paula Ribeiro</p>
+                    <p>Pediatra</p>
+                </div>
+
+                <div class="medico neuro" onclick="startChat('Dr. Lucas Pereira')">
+                    <p>Dr. Lucas Pereira</p>
+                    <p>Neurologista</p>
+                </div>
+                <div class="medico neuro" onclick="startChat('Dra. Letícia Costa')">
+                    <p>Dra. Letícia Costa</p>
+                    <p>Neurologista</p>
+                </div>
+
+                <div class="medico derma" onclick="startChat('Dr. Fernando Alves')">
+                    <p>Dr. Fernando Alves</p>
+                    <p>Dermatologista</p>
+                </div>
+                <div class="medico derma" onclick="startChat('Dra. Bianca Oliveira')">
+                    <p>Dra. Bianca Oliveira</p>
+                    <p>Dermatologista</p>
+                </div>
+
+                <div class="medico ortho" onclick="startChat('Dr. Felipe Santos')">
+                    <p>Dr. Felipe Santos</p>
+                    <p>Ortopedista</p>
+                </div>
+                <div class="medico ortho" onclick="startChat('Dra. Camila Ferreira')">
+                    <p>Dra. Camila Ferreira</p>
+                    <p>Ortopedista</p>
+                </div>
+            </div>
+
+            <!-- Modal de Informação do Médico -->
+            <div id="medicoModal" class="medico-modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h3 id="medicoNome"></h3>
+                    <p id="medicoEspecialidade"></p>
+                    <div class="medico-info">
+                        <p><strong>Idade:</strong> <span id="medicoIdade"></span></p>
+                        <p><strong>Telefone:</strong> <span id="medicoTelefone"></span></p>
+                        <p><strong>Email:</strong> <span id="medicoEmail"></span></p>
+                        <p><strong>Sexo:</strong> <span id="medicoSexo"></span></p>
+                        <p><strong>Avaliação do Atendimento:</strong> <span id="medicoAvaliacao"></span></p>
+                        <p><strong>Dias de Atendimento:</strong> <span id="medicoDias"></span></p>
+                        <p><strong>Horário:</strong> <span id="medicoHorario"></span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solicitacao" class="tab">
+            <h2>Solicitação de Medicamentos</h2>
+            <div class="medicamentos">
+                <button onclick="showMedicineInfo('med1')">Paracetamol</button>
+                <button onclick="showMedicineInfo('med2')">Ibuprofeno</button>
+                <button onclick="showMedicineInfo('med3')">Dipirona</button>
+                <button onclick="showMedicineInfo('med4')">Amoxicilina</button>
+                <button onclick="showMedicineInfo('med5')">Omeprazol</button>
+            </div>
+
+            <div id="medicineInfo" class="medicineInfo">
+                <h3>Informações sobre o Medicamento</h3>
+                <p id="medicineDetails"></p>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+<footer>2024, Página de FastFarma, todos os direitos reservados.</footer>
+
+</html>
